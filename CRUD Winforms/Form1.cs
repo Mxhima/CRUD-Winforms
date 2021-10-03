@@ -19,13 +19,19 @@ namespace CRUD_Winforms
         }
 
         //SqlConnection
-        
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Mahima\Documents\DB3.mdf;Integrated Security=True;Connect Timeout=30");
 
         private void button1_Click(object sender, EventArgs e)
         {
 
             //Insert records
-            
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT into ItemTable values ("+int.Parse(textBox1.Text)+ ", '" +textBox2.Text+ "', '" + textBox3.Text + "', getdate())", con);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Record Successfully inserted.");
+            con.Close();
+            BindData();
+
 
         }
 
