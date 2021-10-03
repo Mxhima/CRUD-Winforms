@@ -38,7 +38,12 @@ namespace CRUD_Winforms
         void BindData()
         {
             //Show in Datagridview
-            
+            SqlCommand cmd2 = new SqlCommand("SELECT * from ItemTable", con);
+            SqlDataAdapter sd = new SqlDataAdapter(cmd2);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
