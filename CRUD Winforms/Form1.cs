@@ -61,9 +61,25 @@ namespace CRUD_Winforms
         private void button3_Click(object sender, EventArgs e)
         {
             //Delete records 
-            
-            
+            if (textBox1.Text != "")
+        {
+            if (MessageBox.Show("Are you sure to proceed with Delete?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+        con.Open();
+        SqlCommand cmd4 = new SqlCommand("Delete Itemtable where ProductID = '" + int.Parse(textBox1.Text) + "' ", con);
+        cmd4.ExecuteNonQuery();
+        con.Close();
+        MessageBox.Show("Record Successfully Deleted.");
+        BindData();
         }
+        }
+       else
+       {
+       MessageBox.Show("Input the Product ID");
+       }
+            
+            
+       }
 
         private void button4_Click(object sender, EventArgs e)
         {
