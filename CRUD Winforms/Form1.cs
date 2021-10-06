@@ -49,7 +49,12 @@ namespace CRUD_Winforms
         private void button2_Click(object sender, EventArgs e)
         {
             //Update records
-            
+            con.Open();
+            SqlCommand cmd3 = new SqlCommand("UPDATE ItemTable set ItemName = '"+textBox2.Text+"', '"+textBox3.Text+"' where ProductID = '"+int.Parse(textBox1.Text)+"' ", con);
+            cmd3.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Successfully Updated.");
+            BindData();
 
         }
 
