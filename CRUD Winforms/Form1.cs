@@ -84,6 +84,12 @@ namespace CRUD_Winforms
         private void button4_Click(object sender, EventArgs e)
         {
             //Search records
+            
+            SqlCommand cmd2 = new SqlCommand("SELECT * from ItemTable where ProductID = '"+int.Parse(textBox1.Text)+"' ", con);
+            SqlDataAdapter sd = new SqlDataAdapter(cmd2);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
 
             
         }
